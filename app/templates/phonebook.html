@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Contacts{% endblock %}
+
+{% block content %}
+
+<form class="bg-white p-5 mx-5">
+    
+    <h1 class="text-center">Add Contacts to Your Phonebook</h1>
+
+    {{ form.first_name.label }}
+    {{ form.first_name(class='form-control mt-2 mb-2', placeholder='Enter First Name') }}
+
+    {{ form.last_name.label }}
+    {{ form.last_name(class='form-control mt-2 mb-2', placeholder='Enter Last Name') }}
+
+    {{ form.phone_number.label }}
+    {{ form.phone_number(class='form-control mt-2 mb-2', placeholder='Enter Phone Number') }}
+
+    {{ form.address.label }}
+    {{ form.address(class='form-control mt-2 mb-2', placeholder='Enter Address') }}
+
+    {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+
+</form>
+{% endblock %}

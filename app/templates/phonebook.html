@@ -4,23 +4,27 @@
 
 {% block content %}
 
-<form class="bg-white p-5 mx-5">
+<h1 class="text-center bg-warning mx-5 mb-4">Add Contacts to Your Phonebook</h1>
+
+<form class="bg-light p-5 mx-5" action="" method="POST">
     
-    <h1 class="text-center">Add Contacts to Your Phonebook</h1>
+    <!-- <h1 class="text-center">Add Contacts to Your Phonebook</h1> -->
+
+    {{ form.csrf_token }}
 
     {{ form.first_name.label }}
-    {{ form.first_name(class='form-control mt-2 mb-2', placeholder='Enter First Name') }}
+    {{ form.first_name(class='form-control mt-3 mb-3', placeholder='Enter First Name') }}
 
     {{ form.last_name.label }}
-    {{ form.last_name(class='form-control mt-2 mb-2', placeholder='Enter Last Name') }}
+    {{ form.last_name(class='form-control mt-3 mb-3', placeholder='Enter Last Name') }}
 
     {{ form.phone_number.label }}
-    {{ form.phone_number(class='form-control mt-2 mb-2', placeholder='Enter Phone Number') }}
+    {{ form.phone_number(class='form-control mt-3 mb-3', placeholder='Enter Phone Number') }}
 
     {{ form.address.label }}
-    {{ form.address(class='form-control mt-2 mb-2', placeholder='Enter Address') }}
+    {{ form.address(class='form-control mt-3 mb-3', placeholder='Enter Address') }}
 
-    {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+    {{ form.submit(class='btn btn-warning w-100 mt-4') }}
 
 </form>
 {% endblock %}

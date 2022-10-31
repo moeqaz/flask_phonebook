@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Contacts{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center bg-warning mx-5 mb-4">Sign Up to Create Your Own Phonebook!</h1>
+
+<form class="bg-light p-5 mx-5" action="" method="POST">
+    
+    {{ form.csrf_token }}
+
+    {{ form.name.label }}
+    {{ form.name(class='form-control mt-1 mb-3', placeholder='Enter Name') }}
+     
+    {{ form.email.label }}
+    {{ form.email(class='form-control mt-1 mb-3', placeholder='Enter Email') }}
+
+    {{ form.username.label }}
+    {{ form.username(class='form-control mt-1 mb-3', placeholder='Enter Username') }}
+
+    {{ form.password.label }}
+    {{ form.password(class='form-control mt-1 mb-3', placeholder='Enter Password')}}
+
+    {{ form.confirm_pass.label }}
+    {{ form.confirm_pass(class='form-control mt-1 mb-3', placeholder='Confirm Password')}}
+
+    {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+
+    <!-- <p class="text-center mt-3">Already have an account? <a href="{{ url_for('login') }}" class="text-dark">Log in to your account!</a></p> -->
+
+</form>
+
+    <p class="text-center text-warning mt-3">Already have an account? <a href="{{ url_for('login') }}" class="text-warning">Log in to your account!</a></p>
+
+{% endblock %}

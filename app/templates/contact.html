@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ contact.first_name }}{{ contact.last_name }}{% endblock %}
+
+{% block content %}
+
+    <div class="card mt-5" style="width: -100px;">
+        <div class="card-body text-center">
+        <h2 class="card-title">{{ contact.first_name }} {{ contact.last_name }}</h2>
+        <h4 class="card-subtitle mt-3 mb-3">{{ contact.phone_number }}</h4>
+        <h4 class="card-text mt-2 mb-3">{{ contact.address }} </h4>
+        <a href="{{ url_for('edit_contact', contact_id=contact.id) }}" class="card-link btn btn-success">Edit Contact</a>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteContactModal">
+            Delete Contact
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="deleteContactModal" tabindex="-1" aria-labelledby="deleteContactModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteContactModalLabel">Delete Contact?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                Are you sure you want to delete {{ contact.first_name }} {{ contact.last_name }} from your phonebook? This action can't be reversed!
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nevermind</button>
+                <a class="btn btn-danger" href="{{ url_for('delete_contact', contact_id=contact.id) }}">Delete</a>
+                </div>
+            </div>
+            </div>
+        </div>
+
+{% endblock content %}

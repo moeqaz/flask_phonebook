@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center bg-warning mx-5 mb-4">Log In to Access Your Phonebook!</h1>
+
+<form class="bg-light p-5 mx-5" action="" method="POST">
+    
+    {{ form.csrf_token }}
+
+    {{ form.username.label }}
+    {{ form.username(class='form-control mt-1 mb-3', placeholder='Enter Username') }}
+
+    {{ form.password.label }}
+    {{ form.password(class='form-control mt-1 mb-3', placeholder='Enter Password')}}
+
+    {{ form.submit(class='btn btn-warning w-100 mt-3') }}
+
+    <!-- <p class="text-center mt-3">Don't have an account yet? <a href="{{ url_for('signup') }}" class="text-dark">Sign Up Now!</a></p> -->
+
+</form>
+
+<p class="text-center text-warning mt-3">Don't have an account yet? <a href="{{ url_for('signup') }}" class="text-warning">Sign Up Now!</a></p>
+
+{% endblock %}

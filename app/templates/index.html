@@ -3,8 +3,26 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    {% if current_user.is_authenticated %}
+        <h1 class="text-dark mt-4 mb-2">Hello {{ current_user }}!</h1>
+        <h2 class="text-dark px-4 mb-4">Welcome to your online Phonebook! You can manage your contacts here!</h2>
+        <h3 class="text-light text-center mt-3 mb-4">Your Contacts List</h3>
+
+        {% for contact in contacts %}
+        <ul class="list-group">
+            <li class="list-group-item text-light bg-dark"><strong>Name:</strong> {{ contact.first_name }} {{contact.last_name}}</li>
+            <li class="list-group-item"><strong>Phone Number:</strong> {{ contact.phone_number }}</li>
+            <li class="list-group-item"><strong>Address:</strong> {{ contact.address }}</li>
+            <li class="list-group-item bg-dark mb-3 text-center"><a href="{{ url_for('get_contact', contact_id=contact.id) }}" class="btn btn-warning">View Contact</a></li>
+          </ul>
+        {% endfor %}
+    {% else %}
     <h1>Welcome to the Phonebook Homepage!</h1>
-    <h4>This is the home page. You can't add contacts on this page but <br>
-        if you click that "Add Contacts" link, you'll be able to!</h4>
-    </ul>
+        <h4 class="mb-5">This is the home page. You can't add contacts without an account!</h4>
+
+        <h6 class="mb-4">If you dont have an account yet you can <a href="{{ url_for('signup') }}" class="text-warning">create an account</a> and start adding contacts!</h6>
+        <h6>Already have an account? You can <a href="{{ url_for('login') }}" class="text-warning">click here</a> to log in to your account!</h6>
+
+
+    {% endif %}
 {% endblock content %}

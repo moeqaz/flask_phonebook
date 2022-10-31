@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Information for {{ contact.first_name }}{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center bg-warning mx-5 mb-4">Edit Information for {{ contact.first_name }} {{ contact.last_name }}</h1>
+
+<form class="bg-light p-5 mx-5" action="" method="POST">
+    
+
+    {{ form.csrf_token }}
+
+    {{ form.first_name.label }}
+    {{ form.first_name(class='form-control mt-3 mb-3', value=contact.first_name) }}
+
+    {{ form.last_name.label }}
+    {{ form.last_name(class='form-control mt-3 mb-3', value=contact.last_name) }}
+
+    {{ form.phone_number.label }}
+    {{ form.phone_number(class='form-control mt-3 mb-3', value=contact.phone_number) }}
+
+    {{ form.address.label }}
+    {{ form.address(class='form-control mt-3 mb-3', value=contact.address) }}
+
+    {{ form.submit(class='btn btn-warning w-100 mt-4') }}
+
+</form>
+
+{% endblock %}
